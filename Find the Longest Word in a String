@@ -1,0 +1,19 @@
+function findLongestWord(string) {
+  
+    var str = string.split(" "); //split the array into words
+  
+    var longestWord = 0; // counter of longestword
+  
+    var word = null; // 
+  
+    for (var i = 0; i < str.length ; i++) {
+        if (longestWord < str[i].length) {
+            longestWord = str[i].length;
+            word = str[i];
+        }
+      
+    }
+  
+    return word.length;
+}
+findLongestWord("What if we try a super-long word such as otorhinolaryngology");
