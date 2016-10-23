@@ -1,0 +1,46 @@
+
+function rot13(str) { // LBH QVQ VG!
+  
+  // Iulius Cesar used this method to comunicate with his generals.
+  
+  var array = [];
+  //we are going to look at each characters in a message using a for loop
+  
+  for(var i = 0; i < str.length; i++) {
+    
+    // We have to look up for 3 categories of cases 
+      /*
+      
+      - capital letter from A to M
+      - capital letter from N to Z
+      - non - alphanumeric character (spaces or punctuation signs)
+      
+      */
+    
+    // firstable we have to find the numeric position of every character 
+    
+    // using charCodeAt() we will see the position in ASCII Table  ( http://www.asciitable.com/ )
+    
+    if (str.charCodeAt(i) < 65 || str.charCodeAt(i) > 90) {
+      
+      array.push(str.charAt(i));
+      
+    } else if(str.charCodeAt(i) > 77 ) {
+      
+      array.push(String.fromCharCode(str.charCodeAt(i) - 13));
+      
+    } else {
+      
+      array.push(String.fromCharCode(str.charCodeAt(i) + 13));
+      
+    }
+    
+  }
+  
+
+  
+  return array.join("");
+}
+
+// Change the inputs below to test
+rot13("SERR PBQR PNZC");
