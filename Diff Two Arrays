@@ -1,0 +1,16 @@
+function uniqVal(first, last){
+  
+  return first.filter(function(val) {
+    return last.indexOf(val) < 0;
+  });
+  
+}
+
+function diff(arr1, arr2) {
+ 
+  return uniqVal(arr1, arr2).concat(uniqVal(arr2, arr1));
+  
+ 
+}
+
+diff([1, 2, 3, 5], [1, 2, 3, 4, 5, 6]);
