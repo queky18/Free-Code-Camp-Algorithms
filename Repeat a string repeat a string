@@ -1,0 +1,23 @@
+
+function repeatStringNumTimes(str, num) {
+  // repeat after me
+  
+  var a = [];
+  
+  if(str !== ""){
+    
+    while(a.length < num){
+       a.push(str);
+    }
+    
+    return a.join("");
+    
+  }else{
+    
+    return a;
+    
+  }
+  
+}
+
+repeatStringNumTimes("ceva", 12);
