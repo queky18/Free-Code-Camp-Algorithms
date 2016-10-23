@@ -1,0 +1,17 @@
+function mutation(arr) {
+  
+  var array = arr[1].toLowerCase();
+  
+  var arrayTarget = arr[0].toLowerCase();
+  
+  for (i=0;i<array.length;i++) {
+    
+    if (arrayTarget.indexOf(array[i]) < 0)
+      
+      return false;
+  }
+  
+  return true;
+ }
+
+mutation(["hello", "hey"]);
