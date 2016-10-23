@@ -1,0 +1,25 @@
+function palindrome(str) {
+  
+// Used to find a non-word character - a word character is a character from a-z , A-Z , 0-9 , including the underscore character that we have putted bellow
+  str = str.replace(/[\W_]/g,"").toLowerCase();  
+  
+  
+  
+  var som = str.length; // nr caractere
+  
+  
+  for (var j=0; j<(som-1)/2; j++) { 
+    
+    if (str.charAt(j)!==str.charAt(som-1-j)){  // str.charAt() return the letter at that position
+        
+      return false;
+      
+    }
+    
+  }
+  return true;    // the false statement should be first and true statement must be outside the for loop , otherwise it will break the function after the first match and return inaccurate result
+}
+
+
+
+palindrome("eye");
