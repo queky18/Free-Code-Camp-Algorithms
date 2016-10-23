@@ -1,0 +1,21 @@
+
+function myReplace(str, before, after) {
+  
+  // find index where before is on str (string)
+  var index = str.indexOf(before);
+  
+  // if the first letter is uppercase or not
+  if( str[index] === str[index].toUpperCase() ) {
+    // Change "after" word to be capitalized before we use it
+    after = after.charAt(0).toUpperCase() + after.slice(1);
+  }
+  
+  // Now replace the original str with the new one
+  
+  str = str.replace(before, after);
+  
+  return str;
+  
+}
+
+myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
