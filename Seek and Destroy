@@ -1,0 +1,78 @@
+      // arguments object is an Array-like object corresponding to the arguments passed to a function 
+      // The arguments object is a local variable available within all functions. You can refer to a function's arguments within the function by using the arguments object. This object contains an entry for each argument passed to the function, the first entry's index starting at 0. 
+
+
+function destroyer(arr) {
+  // Remove all the values
+  
+  
+  for (var i = arr.length -1; i >= 0; i--){
+    
+    // Practically in the array "arr" we have an obviously array and a like-array object , that's why we use arguments method ...for my better understanding ! 
+    
+    for(var j = 1; j < arguments.length; j++){
+
+      /// === means is case sensitive so be carefully with your typing, Adrian
+      
+      if(arr[i] === arguments[j]) { // if the value from the second array(Which we converted in an array with arguments method , because it wasn't an array, just some strings and integers / booleans there) correspond exactly with the value from the first one ,  DO : 
+        
+        arr.splice(i, 1);
+        break;
+        
+      } // end of IF
+    } // end of Second FOR
+  } // end of first FOR
+  
+  
+  return arr;
+}
+
+
+destroyer(["treE", "hamburger", 53, "missing", false, NaN, 0], "tree", 53, NaN, 0);
+
+
+/*
+ Explanation : 
+
+Working with arguments as if it was a regular array. The best way is to convert it into one.
+Its needed filtering it, which means I need to create a callback function, one that checks if the elements is on the indexOf()
+
+To convert the arguments into an array I have to use 
+
+args = Array.prototype.slice.call(arguments);
+-- --- This type of object is often called an array-like object 
+The .call() and .apply() methods let you manually set the value of "this" in a function, so if we set the value of "this" in .slice() to an array-like object, .slice() will just assume it's working with an Array,  and will do its thing.
+
+
+One way of how to do it : 
+
+  function destroyer(arr) {
+    var args = Array.prototype.slice.call(arguments);
+    args.splice(0,1);
+    return arr.filter(function(element) {
+      return args.indexOf(element) === -1;
+    });
+  }
+  
+       Explanation : 
+       - The first line will turn the arguments variable into a full array instead of the limited array it currently it.
+       - Next I remove the first argument since I don't need, since I only want the other arguments passed besides the first which is the array we are going to compare against.
+       - The use of filter() to filter out the elements that are on the array and keep the ones that are not.
+
+
+
+Others methods for this problem .
+
+  function destroyer(arr) {
+    return arr.filter(function(val) {
+      return Array.prototype.indexOf.call(this, val, 1) === -1;
+    }, arguments);
+  }
+  
+  
+  
+  
+
+*/
+
+
