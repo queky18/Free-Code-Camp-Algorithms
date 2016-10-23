@@ -1,0 +1,99 @@
+
+function makeFriendlyDates(arr) {
+  
+  //array to return
+  var dateArray = [];
+  
+  //Split array into year, month and day
+  var date1 = arr[0].split("-"); // first object
+  var date2 = arr[1].split("-"); // second object
+  
+  //Turn Strings into nums for month
+  date1[1] = Number(date1[1]) - 1; // first obj month
+  date2[1] = Number(date2[1]) - 1; // second obj month
+  
+  // Turn strings into nums for days
+  date1[2] = Number(date1[2]); // first obj day
+  date2[2] = Number(date2[2]); // second obj day
+  
+  // Turn strings into nums for Years
+  date1[0] = Number(date1[0]); // first obj year
+  date2[0] = Number(date2[0]); // second obj day
+  
+  //Storing name of months
+  var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  
+  if(date1[0] === date2[0] && date1[1] === date2[1] && date1[2] === date2[2]){
+    
+    // anul egal si luna egala si ziua egala
+    
+    dateArray.push(monthNames[date1[1]] + " " + dayChange(date1[2]) + ", " + date1[0]);
+    
+    return dateArray;
+    
+  }else if(date2[0] - date1[0] >= 1 && date1[1] === date2[1] && date1[2] !== date2[2]){
+    
+    // anul diferit , luna aceeasi , ziua diferita
+    
+    dateArray.push(monthNames[date1[1]] + " " + dayChange(date1[2]) + ", " + date1[0]);
+    dateArray.push(monthNames[date2[1]] + " " + dayChange(date2[2]));
+    
+    return dateArray;
+    
+  } else if(date2[0] - date1[0] >= 1 && date1[1] === date2[1] && date1[2] === date2[2]){
+    
+    // anul diferit , luna aceeasi , ziua aceeasi
+    
+    dateArray.push(monthNames[date1[1]] + " " + dayChange(date1[2]) + ", " + date1[0]);
+    dateArray.push(monthNames[date2[1]] + " " + dayChange(date2[2]) + ", " + date2[0]);
+    
+    return dateArray;
+    
+  }else if(date1[1] === date2[1]) {
+    
+    // same months
+    
+    dateArray.push(monthNames[date1[1]] + " " + dayChange(date1[2]) );
+    dateArray.push(dayChange(date2[2]));
+  return dateArray;
+    
+  } else if(date2[0] - date1[0] > 1 ) {
+    
+    // different years
+    
+    dateArray.push(monthNames[date1[1]] + " " + dayChange(date1[2]) + ", " + date1[0]);
+    dateArray.push(monthNames[date2[1]] + " " + dayChange(date2[2]) + ", " + date2[0]);
+    return dateArray;
+    
+  } else if(date2[1] - date1[1] >= 1 && date2[0] - date1[0] === 0){
+    
+    // different months and same year
+    
+    dateArray.push(monthNames[date1[1]] + " " + dayChange(date1[2]) + ", " + date1[0]);
+    dateArray.push(monthNames[date2[1]] + " " + dayChange(date2[2]));
+    return dateArray;
+    
+    // it's an else, everything it's possible
+  }
+  else {
+    dateArray.push(monthNames[date1[1]] + " " + dayChange(date1[2]));
+    dateArray.push(monthNames[date2[1]] + " " + dayChange(date2[2])); 
+    return dateArray;
+  }
+  
+  function dayChange(day){
+    if(day === 1){
+      return day + "st";
+    }else if(day === 2){
+      return day + "nd";
+    }else if(day === 3){
+      return day + "rd";
+    } else {
+      return day + "th";
+    }
+  }
+  
+  
+}
+
+makeFriendlyDates(["2022-09-05", "2023-09-05"]);
