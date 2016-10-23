@@ -1,0 +1,16 @@
+
+function getIndexToIns(arr, num) {
+  // Find my place in this sorted array.
+  
+  // Simply we use arr.push() and after arr.sort of the new arr
+  
+  arr.push(num); // pushing the number in the array
+  
+  arr.sort(function(a,b) {    /// sorting the array in the new order
+    return a-b;  
+  });
+  
+  return arr.indexOf(num);  /// taking out the index of the new item of the array
+}
+
+getIndexToIns([40, 60, 42, 33, 32, 44, 32, 16], 50);
